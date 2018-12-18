@@ -111,12 +111,13 @@ let videoPlayer = new VideoPlayer();
 videoPlayer.init();
 */
 
-//ENCAPSULATION STYLE with constructor function (call, apply, bind)
+//ENCAPSULATION STYLE with constructor function (call, apply, bind) WITH OOP
 
-function VideoPlayer() {
-  this.playImg = document.querySelector("#playImg");
-  this.reloadImg = document.querySelector("#reloadImg");
-  this.video = document.querySelector("video");
+function VideoPlayer(id) {
+  this.videoHolder = document.querySelector("#" + id);
+  this.playImg = this.videoHolder.querySelector(".playImg");
+  this.reloadImg = this.videoHolder.querySelector(".reloadImg");
+  this.video = this.videoHolder.querySelector("video");
 
   this.init = function() {
     this.playImg.addEventListener("click", this.startVideo.bind(this));
@@ -136,5 +137,5 @@ function VideoPlayer() {
     this.playImg.setAttribute("src", "img/play.png");
   };
 }
-let videoPlayer = new VideoPlayer();
-videoPlayer.init();
+let videoPlayer1 = new VideoPlayer("video1").init();
+let videoPlayer2 = new VideoPlayer("video2").init();

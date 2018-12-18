@@ -39,13 +39,13 @@ video {
   display: block;
 }
 
-#playImg {
+.playImg {
   left: 33%;
   width: 100px;
   height: 100px;
 }
 
-#reloadImg {
+.reloadImg {
   left: 50%;
   width: 100px;
   height: 100px;
