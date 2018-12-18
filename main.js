@@ -53,7 +53,7 @@ videoPlayer.init()
 */
 
 //ENCAPSULATION STYLE in function (da se ne vidi u konzoli)
-
+/*
 (function () {
   let videoPlayer = {
     playImg: document.querySelector("#playImg"),
@@ -80,3 +80,33 @@ videoPlayer.init()
 
   videoPlayer.init()
 })()
+*/
+
+//ENCAPSULATION STYLE with constructor function
+
+function VideoPlayer() {
+  let self = this;
+  this.playImg = document.querySelector("#playImg");
+  this.reloadImg = document.querySelector("#reloadImg");
+  this.video = document.querySelector("video");
+
+  this.init = function () {
+    this.playImg.addEventListener('click', this.startVideo)
+    this.reloadImg.addEventListener('click', this.loadVideo)
+  };
+  this.startVideo = function () {
+    if (this.getAttribute('src') == 'img/play.png') {
+      self.video.play()
+      this.setAttribute('src', "img/pause.jpg")
+    } else {
+      self.video.pause()
+      self.playImg.setAttribute('src', "img/play.png")
+    }
+  };
+  this.loadVideo = function () {
+    self.video.load()
+    self.playImg.setAttribute('src', "img/play.png")
+  };
+}
+let videoPlayer = new VideoPlayer();
+videoPlayer.init()
