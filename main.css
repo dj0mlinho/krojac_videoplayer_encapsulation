@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapp {
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+
+}
+
+.video-holder {
+  width: 700px;
+  position: relative;
+  margin: 50px auto;
+  border: 1px solid #ddd;
+}
+
+video {
+  width: 700px;
+}
+
+.controls-holder {
+  width: 700px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.controls-holder img {
+  position: absolute;
+  top: 40%;
+  display: none;
+}
+
+.controls-holder:hover>img {
+  display: block;
+}
+
+#playImg {
+  left: 33%;
+  width: 100px;
+  height: 100px;
+}
+
+#reloadImg {
+  left: 50%;
+  width: 100px;
+  height: 100px;
+}
