@@ -23,7 +23,6 @@ function loadVideo() {
 }
 */
 
-
 //ENCAPSULATION STYLE (da se vidi u konzoli)
 /*
 let videoPlayer = {
@@ -82,31 +81,60 @@ videoPlayer.init()
 })()
 */
 
-//ENCAPSULATION STYLE with constructor function
-
+//ENCAPSULATION STYLE with constructor function (self)
+/*
 function VideoPlayer() {
   let self = this;
   this.playImg = document.querySelector("#playImg");
   this.reloadImg = document.querySelector("#reloadImg");
   this.video = document.querySelector("video");
 
-  this.init = function () {
-    this.playImg.addEventListener('click', this.startVideo)
-    this.reloadImg.addEventListener('click', this.loadVideo)
+  this.init = function() {
+    this.playImg.addEventListener("click", this.startVideo);
+    this.reloadImg.addEventListener("click", this.loadVideo);
   };
-  this.startVideo = function () {
-    if (this.getAttribute('src') == 'img/play.png') {
-      self.video.play()
-      this.setAttribute('src', "img/pause.jpg")
+  this.startVideo = function() {
+    if (this.getAttribute("src") == "img/play.png") {
+      self.video.play();
+      this.setAttribute("src", "img/pause.jpg");
     } else {
-      self.video.pause()
-      self.playImg.setAttribute('src', "img/play.png")
+      self.video.pause();
+      self.playImg.setAttribute("src", "img/play.png");
     }
   };
-  this.loadVideo = function () {
-    self.video.load()
-    self.playImg.setAttribute('src', "img/play.png")
+  this.loadVideo = function() {
+    self.video.load();
+    self.playImg.setAttribute("src", "img/play.png");
   };
 }
 let videoPlayer = new VideoPlayer();
-videoPlayer.init()
+videoPlayer.init();
+*/
+
+//ENCAPSULATION STYLE with constructor function (call, apply, bind)
+
+function VideoPlayer() {
+  this.playImg = document.querySelector("#playImg");
+  this.reloadImg = document.querySelector("#reloadImg");
+  this.video = document.querySelector("video");
+
+  this.init = function() {
+    this.playImg.addEventListener("click", this.startVideo.bind(this));
+    this.reloadImg.addEventListener("click", this.loadVideo.bind(this));
+  };
+  this.startVideo = function() {
+    if (this.playImg.getAttribute("src") == "img/play.png") {
+      this.video.play();
+      this.playImg.setAttribute("src", "img/pause.jpg");
+    } else {
+      this.video.pause();
+      this.playImg.setAttribute("src", "img/play.png");
+    }
+  };
+  this.loadVideo = function() {
+    this.video.load();
+    this.playImg.setAttribute("src", "img/play.png");
+  };
+}
+let videoPlayer = new VideoPlayer();
+videoPlayer.init();
